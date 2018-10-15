@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>New Post</h1>
+    <form method='post'>
+        <label>
+            New Blog:
+        <textarea><input type="text" name='blog' /></textarea>
+        </label>
+        <input type="submit" value='Add Blog' />
+       
+    </form>
+
+    <hr />
+
+    {% if blog |length == 0 %}
+    <p>No blogs yet</p>
+    {% else %}
+
+        <ul>
+            {% for blog in blogss %}
+            <li>{{blog_title}}
+               <form method= "post" action="/delete-blog" style="display:inline-block;">
+                    <input type="hidden" name="blog_id" value="{{blog_id}}"/>
+                    <input type="submit" value="Done!"/>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+
+    {% endif %}
+
+    <hr />
+
+    <h2>Submitted Blogs</h2>
+              <ul>
+                 {% for blog in Blog %}
+                  <li>{{'blog.title'}}</li> 
+                 {% endfor %}
+              </ul>
+{% endblock %}
